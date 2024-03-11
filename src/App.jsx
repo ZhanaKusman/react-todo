@@ -1,17 +1,14 @@
+import "./App.css"; 
+import TodoList from "./TodoList";
+import AddTodoForm from "./AddTodoForm";
+
 const App = () => {
-  const todoList = [
-    { id: 1, title: "Complete assignment 1" },
-    { id: 2, title: "Study for exam" },
-    { id: 3, title: "Write report" },
-  ];
   return (
     <div>
       <h1>Todo List</h1>
-      <ul>
-        {todoList.map((task) => (
-          <li key={task.id}>{task.title}</li>
-        ))}
-      </ul>
+      <AddTodoForm />{" "}
+      {/* This line ensures that the AddTodoForm component is being used */}
+      <TodoList />
     </div>
   );
 };
