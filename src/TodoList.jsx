@@ -1,18 +1,18 @@
-const TodoList = () => {
-  const todoList = [
-    { id: 1, title: "Complete assignment 1" },
-    { id: 2, title: "Study for exam" },
-    { id: 3, title: "Write report" },
-    { id: 4, title: "Submit assignment" },
-  ];
+import PropTypes from "prop-types";
+import TodoListItem from "./TodoListItem";
 
+const TodoList = ({ todoList }) => {
   return (
     <ul>
-      {todoList.map((task) => (
-        <li key={task.id}>{task.title}</li>
+      {todoList.map((todo) => (
+        <TodoListItem key={todo.id} todo={todo} />
       ))}
     </ul>
   );
+};
+
+TodoList.propTypes = {
+  todoList: PropTypes.array.isRequired,
 };
 
 export default TodoList;
