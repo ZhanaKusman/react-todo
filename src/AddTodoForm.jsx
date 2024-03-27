@@ -9,17 +9,24 @@ const AddTodoForm = ({ addTodo }) => {
     if (!todoTitle.trim()) {
       return;
     }
-    addTodo(todoTitle);
+    addTodo({
+      title: todoTitle,
+      id: Date.now(),
+    });
     setTodoTitle("");
+  };
+
+  const handleTitleChange = (event) => {
+    setTodoTitle(event.target.value);
   };
 
   return (
     <form onSubmit={handleAddTodo}>
       <input
         type="text"
-        name="title" // Added name attribute
+        name="title"
         value={todoTitle}
-        onChange={(event) => setTodoTitle(event.target.value)}
+        onChange={handleTitleChange}
         placeholder="Enter todo title"
       />
       <button type="submit">Add Todo</button>

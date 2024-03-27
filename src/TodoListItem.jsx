@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
 
-const TodoListItem = ({ todo }) => {
-  return <li>{todo.title}</li>;
+const TodoListItem = ({ id, title }) => {
+  return <li key={id}>{title}</li>;
 };
 
 TodoListItem.propTypes = {
-  todo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default TodoListItem;
