@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
 
-const TodoListItem = ({ id, title }) => {
+const TodoListItem = ({ id, title, onRemoveTodo }) => {
+  const handleRemoveClick = () => {
+    onRemoveTodo(id);
+  };
+
   return (
-    <li key={id} style={{ margin: 0, padding: 0 }}>
+    <li key={id}>
       {title}
+      <button type="button" onClick={handleRemoveClick}>Remove</button>
     </li>
   );
 };
@@ -11,6 +16,7 @@ const TodoListItem = ({ id, title }) => {
 TodoListItem.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;
