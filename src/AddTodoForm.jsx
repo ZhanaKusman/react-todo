@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
+import PropTypes from "prop-types"; 
 
 const AddTodoForm = ({ addTodo }) => {
   const [todoTitle, setTodoTitle] = useState("");
@@ -22,20 +22,22 @@ const AddTodoForm = ({ addTodo }) => {
 
   return (
     <form onSubmit={handleAddTodo}>
+      <label htmlFor="todo-title">Title</label> {}
       <input
+        id="todo-title"
         type="text"
         name="title"
         value={todoTitle}
         onChange={handleTitleChange}
         placeholder="Enter todo title"
       />
-      <button type="submit">Add Todo</button>
+      <button type="submit">Add</button> {}
     </form>
   );
 };
 
 AddTodoForm.propTypes = {
-  addTodo: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired, 
 };
 
 export default AddTodoForm;
