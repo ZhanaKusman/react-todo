@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  align-items: flex-start;
 }
 
 .logo {
@@ -44,7 +45,8 @@
 ul {
   list-style-type: none; 
   padding: 0; 
+  margin: 0;
 }
 li {
-  margin-bottom: 0.5em; 
+  margin-bottom: 0; 
 }
