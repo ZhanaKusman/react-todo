@@ -1,53 +1,60 @@
+import { useEffect, useState } from "react";
 import "./App.css";
-import { useState, useEffect } from "react";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
 
-const App = () => {
+function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    new Promise((resolve) => {
-      setTimeout(() => {
-        const savedTodoList = localStorage.getItem("savedTodoList");
-        resolve({
-          data: { todoList: savedTodoList ? JSON.parse(savedTodoList) : [] },
-        });
-      }, 2000);
-    }).then((result) => {
-      setTodoList(result.data.todoList);
+  const fetchData = async () => {
+    const apiURL = `https://api.airtable.com/v0/${
+      import.meta.env.VITE_AIRTABLE_BASE_ID
+    }/${import.meta.env.VITE_TABLE_NAME}`;
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+    };
+
+    try {
+      const response = await fetch(apiURL, options);
+
+      if (!response.ok) {
+        const message = `Error has occurred: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const data = await response.json();
+      const todos = data.records.map((todo) => ({
+        id: todo.id,
+        title: todo.fields.title,
+      }));
+
+      setTodoList(todos);
       setIsLoading(false);
-    });
+    } catch (error) {
+      console.log(error.message);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    }
-  }, [todoList, isLoading]);
-
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
-  };
-
-  const removeTodo = (idToRemove) => {
-    setTodoList(todoList.filter((todo) => todo.id !== idToRemove));
-  };
-
   return (
-    <>
-      <h1>Todo List</h1>
+    <div>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <>
-          <AddTodoForm addTodo={addTodo} />
-          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-        </>
+        <div>
+          {todoList.map((todo) => (
+            <div key={todo.id}>{todo.title}</div>
+          ))}
+        </div>
       )}
-    </>
+    </div>
   );
-};
+}
 
 export default App;
