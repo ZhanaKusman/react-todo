@@ -22,7 +22,6 @@ const App = () => {
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
   };
-
   return (
     <>
       <h1>Todo List</h1>
