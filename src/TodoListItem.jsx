@@ -8,13 +8,15 @@ const TodoListItem = ({ id, title, onRemoveTodo }) => {
   return (
     <li key={id}>
       {title}
-      <button type="button" onClick={handleRemoveClick}>Remove</button>
+      <button type="button" onClick={handleRemoveClick}>
+        Remove
+      </button>
     </li>
   );
 };
 
 TodoListItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   onRemoveTodo: PropTypes.func.isRequired,
 };
