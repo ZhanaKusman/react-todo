@@ -29,6 +29,7 @@ const App = () => {
       <TodoList todoList={todoList} />
     </>
   );
+  
 };
 
 export default App;
