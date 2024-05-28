@@ -1,52 +1,94 @@
-#root {
+/* Set background color, max width, and center content */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+/* Change the font size, weight, and color of all headings */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Customize input and button styles */
+input[type="text"],
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Apply hover effect to buttons */
+button:hover {
+  background-color: #ddd;
+}
+
+/* Add spacing between elements */
+.container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
-  align-items: flex-start;
 }
 
+/* Apply specific styles for the logo */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Apply styles to navigation links */
+nav {
+  background-color: #333;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
+nav a:hover {
+  background-color: #d88989;
+}
+
+/* Add styles for the card */
 .card {
   padding: 2em;
 }
 
+/* Apply styles to the 'Read the Docs' section */
 .read-the-docs {
   color: #888;
 }
 
+/* Remove default list styles */
 ul {
-  list-style-type: none; 
-  padding: 0; 
+  list-style-type: none;
+  padding: 0;
   margin: 0;
 }
+
+/* Ensure list items have consistent margin */
 li {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
